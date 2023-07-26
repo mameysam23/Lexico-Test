@@ -1,0 +1,38 @@
+.tree-invisible {
+  display: none;
+}
+.ion-toolbar {
+  --background: #a02b2b;
+}
+.tree ul,
+.tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.tree .mat-nested-tree-node div[role="group"] {
+  padding-right: 40px;
+  font-family: "iransans", "sans-serif";
+}
+
+.tree div[role="group"] > .mat-tree-node {
+  padding-right: 40px;
+  font-family: "iransans", "sans-serif";
+}
+
+h1,
+h3 {
+  color: green;
+  font-family: "iransans", sans-serif;
+  text-align: left;
+}
+
+.mat-tree {
+  background: transparent;
+}
+
+.mat-tree-node {
+  color: black;
+  font-family: "iransans", "sans-serif";
+}

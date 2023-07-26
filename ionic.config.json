@@ -1,0 +1,7 @@
+{
+  "name": "lexico-test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

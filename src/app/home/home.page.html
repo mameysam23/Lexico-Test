@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #a02b2b">
+    <ion-title color="light"> لکسیکو لیست </ion-title>
+  </ion-toolbar>
+  <ion-toolbar style="--background: #a02b2b">
+    <ion-row>
+      <ion-col size="2">
+        <button (click)="sort()" mat-icon-button>
+          <mat-icon style="color: white;">sort_by_alpha</mat-icon>
+        </button>
+      </ion-col>
+      <ion-col size="10">
+        <ion-searchbar
+          placeholder="جستجو"
+          (ionInput)="filter($event)"
+        ></ion-searchbar
+      ></ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Lexico</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container" *ngIf="treeData">
+    <mat-tree
+      dir="rtl"
+      [dataSource]="dataSource"
+      [treeControl]="treeControl"
+      class="tree"
+    >
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+        {{node.name}}
+      </mat-tree-node>
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <div class="mat-tree-node">
+          <button
+            mat-icon-button
+            matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.name"
+          >
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          {{node.name}}
+        </div>
+        <div
+          [class.tree-invisible]="!treeControl.isExpanded(node)"
+          role="group"
+        >
+          <ng-container matTreeNodeOutlet></ng-container>
+        </div>
+      </mat-nested-tree-node>
+    </mat-tree>
+
+    <ion-list>
+      <ion-item *ngFor="let item of treeData.list1">
+        <ion-label>{{item.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
